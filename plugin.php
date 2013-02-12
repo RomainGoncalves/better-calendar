@@ -172,6 +172,13 @@ class BetterCalendar {
     	
     	//Let's call and create the custom post type
     	$event = new Custom_Post_Type( 'Event', array('show_in_menu' => true, 'menu_position' => 25, 'has_archive' => true, 'taxonomies' => array('events')) );
+    	$event->add_meta_box(
+    		'Event Details',
+    		array(
+    			'Start Date'	=>	'date',
+    			'End Date'		=>	'date'
+    		)
+    	) ;
 
 	} // end custom_post_type
 	

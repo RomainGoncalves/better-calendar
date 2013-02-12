@@ -203,9 +203,27 @@ class Custom_Post_Type
 										/* Loop through $custom_fields */
 										foreach( $custom_fields as $label => $type )
 										{
+
 											$field_id_name 	= strtolower( str_replace( ' ', '_', $data['id'] ) ) . '_' . strtolower( str_replace( ' ', '_', $label ) );
 											
-											echo '<label for="' . $field_id_name . '">' . $label . '</label><input type="text" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />';
+											//Switch through $type to create adequat input
+											switch ($type) {
+												case 'text':
+												echo '<label for="' . $field_id_name . '">' . $label . '</label>
+												<input type="'.$type.'" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />' ;
+													break;
+
+												case 'date':
+												echo '<label for="' . $field_id_name . '">' . $label . '</label>
+												<input type="'.$type.'" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />' ;
+													break;
+												
+												default://text
+													
+												echo '<label for="' . $field_id_name . '">' . $label . '</label>
+												<input type="text" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />' ;
+													break;
+											}
 										}
 									}
 
