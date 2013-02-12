@@ -65,7 +65,7 @@ class Custom_Post_Type
 					'labels' 				=> $labels,
 					'public' 				=> true,
 					'show_ui' 				=> true,
-					'supports' 				=> array( 'title', 'editor' ),
+					'supports' 				=> array( 'title', 'editor', 'comments', 'thumbnail', 'custom-fields' ),
 					'show_in_nav_menus' 	=> true,
 					'_builtin' 				=> false,
 				),
@@ -74,6 +74,7 @@ class Custom_Post_Type
 				$this->post_type_args
 
 			);
+
 
 			// Register the post type
 			register_post_type( $this->post_type_name, $args );

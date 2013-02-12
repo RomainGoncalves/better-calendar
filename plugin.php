@@ -26,6 +26,8 @@ License:
   
 */
 
+include_once dirname( __FILE__ ) . '/includes/custom-post-types.php';
+
 // TODO: rename this class to a proper name for your plugin
 class BetterCalendar {
 	 
@@ -65,7 +67,10 @@ class BetterCalendar {
 	     * For more information: 
 	     * http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 	     */
-	    add_action( 'admin_init', array( $this, 'action_method_name' ) );
+	    //Adds Custom Post Type file
+	    //add_action('init', array( $this, 'custom_post_types')) ;
+
+	    add_action( 'after_setup_theme', array( $this, 'custom_post_type' ) );
 	    add_filter( 'TODO', array( $this, 'filter_method_name' ) );
 
 	} // end constructor
@@ -163,9 +168,12 @@ class BetterCalendar {
 	 *		  Action Reference:  http://codex.wordpress.org/Plugin_API/Action_Reference
 	 *
 	 */
-	function action_method_name() {
-    	// TODO:	Define your action method here
-	} // end action_method_name
+	function custom_post_type() {
+    	
+    	//Let's call and create the custom post type
+    	$event = new Custom_Post_Type( 'Event', array('show_in_menu' => true, 'menu_position' => 25, 'has_archive' => true, 'taxonomies' => array('events')) );
+
+	} // end custom_post_type
 	
 	/**
 	 * NOTE:  Filters are points of execution in which WordPress modifies data
@@ -178,8 +186,9 @@ class BetterCalendar {
 	function filter_method_name() {
 	    // TODO:	Define your filter method here
 	} // end filter_method_name
+
   
 } // end class
 
 // TODO:	Update the instantiation call of your plugin to the name given at the class definition
-$plugin_name = new BetterCalendar();
+$betterCalendar = new BetterCalendar();
