@@ -176,7 +176,12 @@ class BetterCalendar {
     		'Event Details',
     		array(
     			'Start Date'	=>	'date',
-    			'End Date'		=>	'date'
+    			'Starts at'		=>	'time',
+    			'End Date'		=>	'date',
+    			'Ends at'		=>	'time',
+    			'Where'			=>	'text',
+    			'RSVP'			=>	'checkbox',
+    			'Entry Fee'		=>	'number'
     		)
     	) ;
 

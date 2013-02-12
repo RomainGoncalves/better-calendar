@@ -217,6 +217,21 @@ class Custom_Post_Type
 												echo '<label for="' . $field_id_name . '">' . $label . '</label>
 												<input type="'.$type.'" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />' ;
 													break;
+
+												case 'time':
+												echo '<label for="' . $field_id_name . '">' . $label . '</label>
+												<input type="'.$type.'" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />' ;
+													break;
+
+												case 'checkbox':
+												echo '<label for="' . $field_id_name . '">' . $label . '</label>
+												<input type="'.$type.'" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />' ;
+													break;
+
+												case 'number':
+												echo '<label for="' . $field_id_name . '">' . $label . '</label>
+												<input type="'.$type.'" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />' ;
+													break;
 												
 												default://text
 													
