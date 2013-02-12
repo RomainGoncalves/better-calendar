@@ -67,8 +67,6 @@ class BetterCalendar {
 	     * For more information: 
 	     * http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 	     */
-	    //Adds Custom Post Type featured image for the edit screen
-	    add_image_size('featured_preview', 100, 75, true);
 
 	    add_action( 'after_setup_theme', array( $this, 'custom_post_type' ) );
 	    add_filter( 'TODO', array( $this, 'filter_method_name' ) );
@@ -187,6 +185,9 @@ class BetterCalendar {
     			'Entry Fee'		=>	'number'
     		)
     	) ;
+    	
+	    //Adds Custom Post Type featured image for the edit screen
+	    add_image_size('featured_preview', 100, 75, true);
 
 	} // end custom_post_type
 	
