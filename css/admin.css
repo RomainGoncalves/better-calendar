@@ -1,1 +1,15 @@
-/* This stylesheet is used to style the admin option form of the plugin. */
+li#menu-posts-event.wp-has-submenu:hover div.wp-menu-image,li#menu-posts-event.wp-has-submenu.wp-has-current-submenu div.wp-menu-image{
+	background-image: url('../img/icon-20.png') ;
+	background-position: 4px 4px ;
+	background-repeat: no-repeat;
+}
+li#menu-posts-event.wp-has-submenu div.wp-menu-image {
+	background-image: url('../img/icon-20-grey.png') ;
+	background-position: 4px 4px ;
+	background-repeat: no-repeat;
+}
+div#icon-edit.icon32-posts-event{
+	background-image: url('../img/icon-32.png') ;
+	background-position: 0 ;
+	background-repeat: no-repeat;
+}
