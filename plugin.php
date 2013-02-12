@@ -67,11 +67,14 @@ class BetterCalendar {
 	     * For more information: 
 	     * http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 	     */
-	    //Adds Custom Post Type file
-	    //add_action('init', array( $this, 'custom_post_types')) ;
+	    //Adds Custom Post Type featured image for the edit screen
+	    add_image_size('featured_preview', 100, 75, true);
 
 	    add_action( 'after_setup_theme', array( $this, 'custom_post_type' ) );
 	    add_filter( 'TODO', array( $this, 'filter_method_name' ) );
+
+		add_filter('manage_posts_columns', array($this, 'columns_head') );  
+		add_action('manage_posts_custom_column', array($this, 'columns_content'), 10, 2);  
 
 	} // end constructor
 	
@@ -199,6 +202,30 @@ class BetterCalendar {
 	    // TODO:	Define your filter method here
 	} // end filter_method_name
 
+	// GET FEATURED IMAGE  
+	function get_featured_image($post_ID) {  
+	    $post_thumbnail_id = get_post_thumbnail_id($post_ID);  
+	    if ($post_thumbnail_id) {  
+	        $post_thumbnail_img = wp_get_attachment_image_src($post_thumbnail_id, 'featured_preview');  
+	        return $post_thumbnail_img[0];  
+	    }  
+	}
+
+	// ADD NEW COLUMN  
+	function columns_head($defaults) {  
+	    $defaults['featured_image'] = 'Featured Image';  
+	    return $defaults;  
+	}  
+	  
+	// SHOW THE FEATURED IMAGE  
+	function columns_content($column_name, $post_ID) {  
+	    if ($column_name == 'featured_image') {  
+	        $post_featured_image = $this->get_featured_image($post_ID);  
+	        if ($post_featured_image) {  
+	            echo '<img src="' . $post_featured_image . '" />';  
+	        }  
+	    }  
+	}
   
 } // end class
 
