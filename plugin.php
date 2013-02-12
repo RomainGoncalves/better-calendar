@@ -107,8 +107,8 @@ class BetterCalendar {
 	 */
 	public function plugin_textdomain() {
 	
-		// TODO: replace "better-calendar-locale" with a unique value for your plugin
-		$domain = 'better-calendar';
+		// TODO: replace "better_calendar-locale" with a unique value for your plugin
+		$domain = 'better_calendar';
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
         load_textdomain( $domain, WP_LANG_DIR.'/'.$domain.'/'.$domain.'-'.$locale.'.mo' );
         load_plugin_textdomain( $domain, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
@@ -120,8 +120,8 @@ class BetterCalendar {
 	 */
 	public function register_admin_styles() {
 	
-		// TODO:	Change 'better-calendar' to the name of your plugin
-		wp_enqueue_style( 'better-calendar-admin-styles', plugins_url( 'better-calendar/css/admin.css' ) );
+		// TODO:	Change 'better_calendar' to the name of your plugin
+		wp_enqueue_style( 'better_calendar-admin-styles', plugins_url( 'better_calendar/css/admin.css' ) );
 	
 	} // end register_admin_styles
 
@@ -130,8 +130,8 @@ class BetterCalendar {
 	 */	
 	public function register_admin_scripts() {
 	
-		// TODO:	Change 'better-calendar' to the name of your plugin
-		wp_enqueue_script( 'better-calendar-admin-script', plugins_url( 'better-calendar/js/admin.js' ) );
+		// TODO:	Change 'better_calendar' to the name of your plugin
+		wp_enqueue_script( 'better_calendar-admin-script', plugins_url( 'better_calendar/js/admin.js' ) );
 		wp_enqueue_script('backbone', $src = false, $deps = array('underscore'), $ver = false, $in_footer = false) ;
 	
 	} // end register_admin_scripts
@@ -141,8 +141,8 @@ class BetterCalendar {
 	 */
 	public function register_plugin_styles() {
 	
-		// TODO:	Change 'better-calendar' to the name of your plugin
-		wp_enqueue_style( 'better-calendar-plugin-styles', plugins_url( 'better-calendar/css/display.css' ) );
+		// TODO:	Change 'better_calendar' to the name of your plugin
+		wp_enqueue_style( 'better_calendar-plugin-styles', plugins_url( 'better_calendar/css/display.css' ) );
 	
 	} // end register_plugin_styles
 	
@@ -151,8 +151,8 @@ class BetterCalendar {
 	 */
 	public function register_plugin_scripts() {
 	
-		// TODO:	Change 'better-calendar' to the name of your plugin
-		wp_enqueue_script( 'better-calendar-plugin-script', plugins_url( 'better-calendar/js/display.js' ) );
+		// TODO:	Change 'better_calendar' to the name of your plugin
+		wp_enqueue_script( 'better_calendar-plugin-script', plugins_url( 'better_calendar/js/display.js' ) );
 	
 	} // end register_plugin_scripts
 	
