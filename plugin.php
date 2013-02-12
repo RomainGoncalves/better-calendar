@@ -28,6 +28,9 @@ License:
 
 include_once dirname( __FILE__ ) . '/includes/custom-post-types.php';
 
+//Adds Custom Post Type featured image for the edit screen
+add_image_size('featured_preview', 100, 75, true);
+
 // TODO: rename this class to a proper name for your plugin
 class BetterCalendar {
 	 
@@ -185,9 +188,6 @@ class BetterCalendar {
     			'Entry Fee'		=>	'number'
     		)
     	) ;
-    	
-	    //Adds Custom Post Type featured image for the edit screen
-	    add_image_size('featured_preview', 100, 75, true);
 
 	} // end custom_post_type
 	
