@@ -74,8 +74,8 @@ class BetterCalendar {
 	    add_action( 'after_setup_theme', array( $this, 'custom_post_type' ) );
 	    add_filter( 'TODO', array( $this, 'filter_method_name' ) );
 
-		add_filter('manage_posts_columns', array($this, 'columns_head') );  
-		add_action('manage_posts_custom_column', array($this, 'columns_content'), 10, 2);  
+		add_filter('manage_event_posts_columns', array($this, 'columns_head') );  
+		add_action('manage_event_posts_custom_column', array($this, 'columns_content'), 1, 2);  
 
 	} // end constructor
 	
@@ -126,6 +126,7 @@ class BetterCalendar {
 	
 		// TODO:	Change 'better_calendar' to the name of your plugin
 		wp_enqueue_style( 'better_calendar-admin-styles', plugins_url( 'better_calendar/css/admin.css' ) );
+		wp_enqueue_style( 'better_calendar-admin-jqueryui-styles', plugins_url( 'better_calendar/css/vendors/ui-darkness/jquery-ui-1.10.0.custom.min.css' ) );
 	
 	} // end register_admin_styles
 
@@ -137,6 +138,7 @@ class BetterCalendar {
 		// TODO:	Change 'better_calendar' to the name of your plugin
 		wp_enqueue_script( 'better_calendar-admin-script', plugins_url( 'better_calendar/js/admin.js' ) );
 		wp_enqueue_script('backbone', $src = false, $deps = array('underscore'), $ver = false, $in_footer = false) ;
+		wp_enqueue_script('jquery-ui-datepicker', '', $deps = array('jquery'), '', $in_footer = false) ;
 	
 	} // end register_admin_scripts
 	
@@ -179,14 +181,15 @@ class BetterCalendar {
     	$event->add_meta_box(
     		'Event Details',
     		array(
-    			'Start Date'	=>	'date',
-    			'Starts at'		=>	'time',
-    			'End Date'		=>	'date',
-    			'Ends at'		=>	'time',
+    			'Start Date'	=>	'text',
+    			'Starts at'		=>	'text',
+    			'End Date'		=>	'text',
+    			'Ends at'		=>	'text',
     			'Where'			=>	'text',
     			'RSVP'			=>	'checkbox',
-    			'Entry Fee'		=>	'number'
-    		)
+    			'Entry Fee'		=>	'text'
+    		),
+    		'side'
     	) ;
 
 	} // end custom_post_type

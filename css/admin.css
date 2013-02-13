@@ -13,3 +13,21 @@ div#icon-edit.icon32-posts-event{
 	background-position: 0 ;
 	background-repeat: no-repeat;
 }
+div#event_details label{
+	display: inline-block;
+	clear: both;
+	float: left;
+	margin: 6px 0;
+}
+div#event_details .labels{
+	float: left;
+	display: block;
+}
+div#event_details .inputs{
+	float: left;
+	display: block;
+}
+div#event_details .inputs input{
+	display: block;
+	margin: 3px 0px 6px 10px;
+}

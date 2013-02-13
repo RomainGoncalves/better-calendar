@@ -200,17 +200,20 @@ class Custom_Post_Type
 									// Check the array and loop through it
 									if( ! empty( $custom_fields ) )
 									{
+										$labels = '<fieldset class="labels">' ;
+										$inputs = '<fieldset class="inputs">' ;
 										/* Loop through $custom_fields */
 										foreach( $custom_fields as $label => $type )
 										{
 
 											$field_id_name 	= strtolower( str_replace( ' ', '_', $data['id'] ) ) . '_' . strtolower( str_replace( ' ', '_', $label ) );
 											
+											$labels .= '<label for="' . $field_id_name . '">' . $label . '</label>';
+
 											//Switch through $type to create adequat input
 											switch ($type) {
 												case 'text':
-												echo '<label for="' . $field_id_name . '">' . $label . '</label>
-												<input type="'.$type.'" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />' ;
+												$inputs .= '<input type="'.$type.'" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />' ;
 													break;
 
 												case 'date':
@@ -224,8 +227,7 @@ class Custom_Post_Type
 													break;
 
 												case 'checkbox':
-												echo '<label for="' . $field_id_name . '">' . $label . '</label>
-												<input type="'.$type.'" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />' ;
+												$inputs .= '<input type="'.$type.'" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />' ;
 													break;
 
 												case 'number':
@@ -240,6 +242,10 @@ class Custom_Post_Type
 													break;
 											}
 										}
+
+										echo $labels.'</fieldset>' ;
+										echo $inputs.'</fieldset>' ;
+										echo'<div class="clear"></div>' ;
 									}
 
 								},

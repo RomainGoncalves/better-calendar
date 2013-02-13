@@ -1,6 +1,6 @@
 (function ($) {
 	"use strict";
 	$(function () {
-		// Place your administration-specific JavaScript here
+		$('#event_details input#event_details_start_date').datepicker() ;
 	});
 }(jQuery));
