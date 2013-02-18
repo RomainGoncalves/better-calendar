@@ -75,7 +75,7 @@ class BetterCalendar {
 	    add_filter( 'TODO', array( $this, 'filter_method_name' ) );
 
 		add_filter('manage_event_posts_columns', array($this, 'columns_head') );  
-		add_action('manage_event_posts_custom_column', array($this, 'columns_content'), 1, 2);  
+		add_action('manage_event_posts_custom_column', array($this, 'columns_content'), 1, 2);
 
 	} // end constructor
 	
@@ -137,7 +137,6 @@ class BetterCalendar {
 	
 		// TODO:	Change 'better_calendar' to the name of your plugin
 		wp_enqueue_script( 'better_calendar-admin-script', plugins_url( 'better_calendar/js/admin.js' ) );
-		wp_enqueue_script('backbone', $src = false, $deps = array('underscore'), $ver = false, $in_footer = false) ;
 		wp_enqueue_script('jquery-ui-datepicker', '', $deps = array('jquery'), '', $in_footer = false) ;
 	
 	} // end register_admin_scripts
@@ -158,6 +157,7 @@ class BetterCalendar {
 	public function register_plugin_scripts() {
 	
 		// TODO:	Change 'better_calendar' to the name of your plugin
+		wp_enqueue_script('backbone', $src = false, $deps = array('underscore'), $ver = false, $in_footer = false) ;
 		wp_enqueue_script( 'better_calendar-plugin-script', plugins_url( 'better_calendar/js/display.js' ) );
 	
 	} // end register_plugin_scripts
@@ -177,7 +177,7 @@ class BetterCalendar {
 	function custom_post_type() {
     	
     	//Let's call and create the custom post type
-    	$event = new Custom_Post_Type( 'Event', array('show_in_menu' => true, 'menu_position' => 25, 'has_archive' => true, 'taxonomies' => array('events')) );
+    	$event = new Custom_Post_Type( 'Event', array( 'show_in_menu' => true, 'menu_position' => 25, 'has_archive' => true, 'taxonomies' => array('events')), array('menu_name' => 'Calendar') );
     	$event->add_meta_box(
     		'Event Details',
     		array(
@@ -230,8 +230,27 @@ class BetterCalendar {
 	        }  
 	    }  
 	}
+
+	//Shortcode function
+	function better_calendar_shortcode(){
+
+		$args = array(
+			'post_type'	=> 'event'
+			) ;
+
+		//Get all events
+		$events = new WP_Query($args) ;
+
+		$events = '<pre>'.json_encode($events->posts).'</pre>' ;
+		//$output = "shortcode" ;
+
+		//return the output
+		return $events ;
+	}
   
 } // end class
 
 // TODO:	Update the instantiation call of your plugin to the name given at the class definition
 $betterCalendar = new BetterCalendar();
+
+add_shortcode('better-calendar', array('BetterCalendar', 'better_calendar_shortcode')) ;
