@@ -232,15 +232,28 @@ class BetterCalendar {
 		//Get all events
 		$events = new WP_Query($args) ;
 
-		$output = '<div id="better-calendar"></div>' ;
-		$output .= '<div id="better-calendar-events">' ;
-
+		$output = '<div id="better_calendar"></div>' ;
+		$output .= '<table id="better_calendar_events">' ;
+		$output .= '<thead><tr><td>Event</td><td>Date</td><td>Where</td></tr></thead>' ;
+		//var_dump($events_>posts);
 		//Loop through events
 		foreach ($events->posts as $key => $event) {
-			$output .= 'Event : '.$event->post_title.'<br />' ;
+
+			$meta = get_post_meta($event->ID) ;
+
+			//var_dump($meta) ;
+
+			$output .= '<tr class="'.str_replace('/', '-', $meta['event_details_start_date'][0]).'">
+							<td class="event">'.$event->post_title.'</td>
+							<td class="event_date">'.$meta['event_details_start_date'][0].'</td>
+							<td>'.$meta['event_details_where'][0].'</td>
+						</tr>
+						<tr class="row_desc">
+							<td class="event_description">'.$event->post_content.'</td>
+						</tr>' ;
 		}
 
-		$output .= '</div>' ;
+		$output .= '</table>' ;
 
 
 		//return the output

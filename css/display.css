@@ -1,7 +1,24 @@
-div#better-calendar{
+div#better_calendar{
 	float: left;
 }
-div#better-calendar table td{
+div#better_calendar table td{
 	border-top: none;
 	padding: 1px ;
+}
+table#better_calendar_events{
+	float: left;
+	margin-left: 20px ;
+	width: auto;
+}
+table#better_calendar_events thead td{
+	font-weight: bold;
+}
+table#better_calendar_events tbody tr.row_desc{
+	display: none;
+}
+div#better_calendar table td.highlight a{
+	border: 1px solid #ffaf0f;
+	background: #f58400 url(/wp-content/plugins/better-calendar/css/vendors/ui-darkness/images/ui-bg_inset-soft_30_f58400_1x100.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: #ffffff;
 }
