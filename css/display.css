@@ -8,12 +8,30 @@ div#better_calendar table td{
 table#better_calendar_events{
 	float: left;
 	margin-left: 20px ;
-	width: auto;
+	width: 330px;
 }
 table#better_calendar_events thead td{
 	font-weight: bold;
 }
-table#better_calendar_events tbody tr.row_desc{
+table#better_calendar_events tbody tr.row_desc span{
+	float: right;
+	display: block;
+	clear: right;
+	margin-left: 20px;
+}
+table#better_calendar_events tbody tr.row_desc p{
+	float: left;
+	display: block;
+	width: 215px;
+	margin: 5px 0 0 5px;
+}
+table#better_calendar_events tbody tr.row_desc img{
+	margin: 5px 0 0 5px;
+}
+table#better_calendar_events tbody tr.show{
+	background-color: #dfdddd;
+}
+table#better_calendar_events tbody tr.row_desc, table#better_calendar_events tbody tr.event_details{
 	display: none;
 }
 div#better_calendar table td.highlight a{

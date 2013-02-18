@@ -241,19 +241,44 @@ class BetterCalendar {
 
 			$meta = get_post_meta($event->ID) ;
 
-			//var_dump($meta) ;
+			//var_dump(has_post_thumbnail($event->ID)) ;
 
 			$output .= '<tr class="'.str_replace('/', '-', $meta['event_details_start_date'][0]).'">
 							<td class="event">'.$event->post_title.'</td>
 							<td class="event_date">'.$meta['event_details_start_date'][0].'</td>
 							<td>'.$meta['event_details_where'][0].'</td>
-						</tr>
-						<tr class="row_desc">
-							<td class="event_description">'.$event->post_content.'</td>
 						</tr>' ;
+
+			$output .=	'<tr class="row_desc">
+							<td class="event_description" colspan="3">' ;
+
+			if(has_post_thumbnail($event->ID)){
+
+				$output .= get_the_post_thumbnail($event->ID, $size = 'post-thumbnail', $attr = '') ;
+
+			}
+
+			$output .= '<p>'.$event->post_content.'</p>' ;
+
+			if($meta['event_details_starts_at'][0]){
+
+				$output .= '<span class="starts">Starts: <em class="time">'.$meta['event_details_starts_at'][0].'</em></span>' ;
+
+			}
+			if($meta['event_details_entry_fee'][0]){
+
+				$output .= '<span class="fees">Entry Fee: <em class="amount">$'.$meta['event_details_entry_fee'][0].'</em></span>' ;
+
+			}
+			if($meta['event_details_rsvp'][0]){
+
+				$output .= '<span class="rsvp">Please RSVP</span>' ;
+
+			}
+						
 		}
 
-		$output .= '</table>' ;
+		$output .= '</td></tr></table>' ;
 
 
 		//return the output
