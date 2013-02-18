@@ -124,7 +124,6 @@ class BetterCalendar {
 	 */
 	public function register_admin_styles() {
 	
-		// TODO:	Change 'better_calendar' to the name of your plugin
 		wp_enqueue_style( 'better_calendar-admin-styles', plugins_url( 'better_calendar/css/admin.css' ) );
 		wp_enqueue_style( 'better_calendar-admin-jqueryui-styles', plugins_url( 'better_calendar/css/vendors/ui-darkness/jquery-ui-1.10.0.custom.min.css' ) );
 	
@@ -135,7 +134,6 @@ class BetterCalendar {
 	 */	
 	public function register_admin_scripts() {
 	
-		// TODO:	Change 'better_calendar' to the name of your plugin
 		wp_enqueue_script( 'better_calendar-admin-script', plugins_url( 'better_calendar/js/admin.js' ) );
 		wp_enqueue_script('jquery-ui-datepicker', '', $deps = array('jquery'), '', $in_footer = false) ;
 	
@@ -146,8 +144,8 @@ class BetterCalendar {
 	 */
 	public function register_plugin_styles() {
 	
-		// TODO:	Change 'better_calendar' to the name of your plugin
 		wp_enqueue_style( 'better_calendar-plugin-styles', plugins_url( 'better_calendar/css/display.css' ) );
+		wp_enqueue_style( 'better_calendar-admin-jqueryui-styles', plugins_url( 'better_calendar/css/vendors/ui-darkness/jquery-ui-1.10.0.custom.min.css' ) );
 	
 	} // end register_plugin_styles
 	
@@ -156,9 +154,9 @@ class BetterCalendar {
 	 */
 	public function register_plugin_scripts() {
 	
-		// TODO:	Change 'better_calendar' to the name of your plugin
-		wp_enqueue_script('backbone', $src = false, $deps = array('underscore'), $ver = false, $in_footer = false) ;
-		wp_enqueue_script( 'better_calendar-plugin-script', plugins_url( 'better_calendar/js/display.js' ) );
+		//wp_enqueue_script('backbone', $src = false, $deps = array('underscore'), $ver = false, $in_footer = false) ; //TODO
+		wp_enqueue_script( 'better_calendar-plugin-script', plugins_url( 'better_calendar/js/display.js' ), array('jquery') );
+		wp_enqueue_script('jquery-ui-datepicker', '', $deps = array('jquery'), '', $in_footer = false) ;
 	
 	} // end register_plugin_scripts
 	
@@ -166,14 +164,7 @@ class BetterCalendar {
 	 * Core Functions
 	 *---------------------------------------------*/
 	
-	/**
- 	 * NOTE:  Actions are points in the execution of a page or process
-	 *        lifecycle that WordPress fires.
-	 *
-	 *		  WordPress Actions: http://codex.wordpress.org/Plugin_API#Actions
-	 *		  Action Reference:  http://codex.wordpress.org/Plugin_API/Action_Reference
-	 *
-	 */
+	/**/
 	function custom_post_type() {
     	
     	//Let's call and create the custom post type
@@ -232,7 +223,7 @@ class BetterCalendar {
 	}
 
 	//Shortcode function
-	function better_calendar_shortcode(){
+	function better_calendar_shortcode(){//For now displays calendar, TODO -> Add Backbone
 
 		$args = array(
 			'post_type'	=> 'event'
@@ -241,16 +232,23 @@ class BetterCalendar {
 		//Get all events
 		$events = new WP_Query($args) ;
 
-		$events = '<pre>'.json_encode($events->posts).'</pre>' ;
-		//$output = "shortcode" ;
+		$output = '<div id="better-calendar"></div>' ;
+		$output .= '<div id="better-calendar-events">' ;
+
+		//Loop through events
+		foreach ($events->posts as $key => $event) {
+			$output .= 'Event : '.$event->post_title.'<br />' ;
+		}
+
+		$output .= '</div>' ;
+
 
 		//return the output
-		return $events ;
+		return $output ;
 	}
   
 } // end class
 
-// TODO:	Update the instantiation call of your plugin to the name given at the class definition
 $betterCalendar = new BetterCalendar();
 
 add_shortcode('better-calendar', array('BetterCalendar', 'better_calendar_shortcode')) ;

@@ -1,6 +1,6 @@
 (function ($) {
 	"use strict";
 	$(function () {
-		// Place your public-facing JavaScript here
+		$('#better-calendar').datepicker() ;
 	});
 }(jQuery));
