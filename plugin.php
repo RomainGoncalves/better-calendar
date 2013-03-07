@@ -145,7 +145,7 @@ class BetterCalendar {
 	public function register_plugin_styles() {
 	
 		wp_enqueue_style( 'better_calendar-plugin-styles', plugins_url( 'better_calendar/css/display.css' ) );
-		wp_enqueue_style( 'better_calendar-admin-jqueryui-styles', plugins_url( 'better_calendar/css/vendors/ui-darkness/jquery-ui-1.10.1.custom.min.css' ) );
+		//wp_enqueue_style( 'better_calendar-admin-jqueryui-styles', plugins_url( 'better_calendar/css/vendors/ui-darkness/jquery-ui-1.10.1.custom.min.css' ) );
 		wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Sintony:400,700', 'better_calendar-admin-jqueryui-styles');
 		wp_enqueue_style( 'better_calendar-custom-calendar', plugins_url( 'better_calendar/css/calendar.css' ), 'better_calendar-admin-jqueryui-styles' );
 	
