@@ -35,8 +35,8 @@ table#better_calendar_events tbody tr.row_desc, table#better_calendar_events tbo
 	display: none;
 }
 div#better_calendar table td.highlight a{
-	border: 1px solid #ffaf0f;
-	background: #f58400 url(/wp-content/plugins/better-calendar/css/vendors/ui-darkness/images/ui-bg_inset-soft_30_f58400_1x100.png) 50% 50% repeat-x;
+	border: 1px solid red;
+	background: #fff79a url(/wp-content/plugins/better-calendar/css/vendors/ui-darkness/images/ui-bg_inset-soft_30_f58400_1x100.png) 50% 50% repeat-x;
 	font-weight: bold;
-	color: #ffffff;
+	color: #000000;
 }

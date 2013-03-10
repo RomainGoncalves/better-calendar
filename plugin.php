@@ -282,6 +282,7 @@ class BetterCalendar {
 
 		$output .= '</td></tr></table>' ;
 
+		wp_reset_query() ;
 
 		//return the output
 		return $output ;

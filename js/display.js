@@ -49,6 +49,10 @@
 
 			var selector = "table#better_calendar_events tbody tr." + date.replace(/\//g, '-') ;
 
+			//Hide all rows desc
+			$('table#better_calendar_events tbody tr.row_desc').hide() ;
+			$('table#better_calendar_events tbody tr.row_desc').removeClass('show') ;
+
 
 			if($(selector).next().hasClass('show')){
 				
@@ -58,6 +62,7 @@
 			}
 			else{
 			//console.log($(selector).next().css('display'));
+
 				//Hide event description
 				$(selector).next().show('slow').addClass('show') ;
 			}
